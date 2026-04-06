@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anamorphosis2</title>
+
+<style>
+
+body { 
+  margin:0; 
+  font-family: Arial; 
+  overflow-x:hidden; 
+  background:transparent; 
+}
+
+
+#landing { 
+  position: relative; 
+  width:100%; 
+  height:100vh; 
+}
+
+#graphBackground { 
+  position:absolute; 
+  top:0; 
+  left:0; 
+  width:100%; 
+  height:100%; 
+  object-fit:cover;
+  z-index:0;
+}
+#landingCanvas { 
+  position:absolute; 
+  top:0; left:0; 
+  width:100%; 
+  height:100%; 
+  z-index:1; 
+  pointer-events:none; 
+  background:transparent; 
+}
+
+
+nav { 
+  position:fixed; 
+  top:0; 
+  left:0; 
+  width:60px; 
+  height:100%; 
+  background: rgb(149, 146, 146); 
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  z-index:10; 
+}
+
+nav ul { 
+  list-style:none; 
+  margin:0; 
+  padding:0; 
+}
+
+nav ul li { 
+  margin:15px 0; 
+  text-align:center; 
+}
+
+nav ul li a { 
+  text-decoration:none; 
+  color:white; 
+  font-weight:bold; 
+  writing-mode:vertical-rl; 
+  transform:rotate(180deg); 
+  font-size:12px; 
+  transition:color 0.3s; 
+}
+
+nav ul li a:hover { 
+  color:#4065c5; 
+}
+
+
+section { 
+  position:relative;
+  z-index:1; 
+  width:100%; 
+  min-height:100vh; 
+  margin-left:60px; 
+  padding:80px 20px; 
+  display:flex; 
+  justify-content:center; 
+  align-items:center; 
+  flex-direction:column; 
+  text-align:center; 
+  background-size: cover; 
+  background-position: center; 
+  transition: transform 0.2s ease-out; 
+  will-change: transform;   
+}
+
+.section-overlay {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index:0;
+}
+
+section > *:not(.section-overlay) { 
+  position: relative; 
+  z-index:1; 
+}
+
+section#section1 { background: url('images/graph1.jpeg') center/cover no-repeat; }
+section#section2 { background: url('images/graph1.jpeg') center/cover no-repeat; }
+section#section3 { background: url('images/graph1.jpeg') center/cover no-repeat; }
+section#section4 { background: url('images/graph1.jpeg') center/cover no-repeat; }
+
+
+.page-gallery {
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.page-gallery img{
+    width:120px;
+    height:100px;
+    object-fit:cover;
+    border-radius:6px;
+    transform: translateX(-50px);
+    opacity:0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.page-gallery img.show{
+    transform: translateX(0);
+    opacity:1;
+}
+
+.page-text{
+    font-size:14px;
+    color:#444;
+    text-align:center;
+}
+
+
+footer{
+  width:100%;
+  padding:20px;
+  background:#2c2a2a;
+  color:white;
+  text-align:center;
+  font-size:14px;
+  position: relative; 
+  z-index:5;
+  margin-top:50px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a href="#landing">Home</a></li>
+<li><a href="#section1">Page 1</a></li>
+<li><a href="#section2">Page 2</a></li>
+<li><a href="#section3">Page 3</a></li>
+<li><a href="#section4">Page 4</a></li>
+</ul>
+</nav>
+
+
+<section id="landing">
+  <!-- <img id="graphBackground" src="images/SL-072622-51930-04.jpg" alt="Graph Background"> -->
+  <img id="graphBackground" src="images/graph1.jpeg" alt="Graph Background">
+  <canvas id="landingCanvas"></canvas>
+</section>
+
+
+<section id="section1">
+  <div class="section-overlay"></div>
+  <div class="page-gallery">
+    <img src="https://picsum.photos/300/200?1" class="show">
+    <img src="https://picsum.photos/300/200?2" class="show">
+    <img src="https://picsum.photos/300/200?3" class="show">
+    <img src="https://picsum.photos/300/200?4" class="show">
+    <img src="https://picsum.photos/300/200?5" class="show">
+    <img src="https://picsum.photos/300/200?6" class="show">
+    <img src="https://picsum.photos/300/200?7" class="show">
+    <img src="https://picsum.photos/300/200?8" class="show">
+  </div>
+  <p class="page-text">This is a small paragraph describing the images above on Page 1.</p>
+</section>
+
+
+<section id="section2">
+  <div class="section-overlay"></div>
+  <div class="page-gallery">
+    <img src="https://picsum.photos/300/200?9" class="show">
+    <img src="https://picsum.photos/300/200?10" class="show">
+    <img src="https://picsum.photos/300/200?11" class="show">
+    <img src="https://picsum.photos/300/200?12" class="show">
+    <img src="https://picsum.photos/300/200?13" class="show">
+    <img src="https://picsum.photos/300/200?14" class="show">
+    <img src="https://picsum.photos/300/200?15" class="show">
+    <img src="https://picsum.photos/300/200?16" class="show">
+  </div>
+  <p class="page-text">This is a small paragraph describing the images above on Page 2.</p>
+</section>
+
+
+<section id="section3">
+  <div class="section-overlay"></div>
+  <div class="page-gallery">
+    <img src="https://picsum.photos/300/200?17" class="show">
+    <img src="https://picsum.photos/300/200?18" class="show">
+    <img src="https://picsum.photos/300/200?19" class="show">
+    <img src="https://picsum.photos/300/200?20" class="show">
+    <img src="https://picsum.photos/300/200?21" class="show">
+    <img src="https://picsum.photos/300/200?22" class="show">
+    <img src="https://picsum.photos/300/200?23" class="show">
+    <img src="https://picsum.photos/300/200?24" class="show">
+  </div>
+  <p class="page-text">This is a small paragraph describing the images above on Page 3.</p>
+</section>
+
+
+<section id="section4">
+  <div class="section-overlay"></div>
+  <div class="page-gallery">
+    <img src="https://picsum.photos/300/200?25" class="show">
+    <img src="https://picsum.photos/300/200?26" class="show">
+    <img src="https://picsum.photos/300/200?27" class="show">
+    <img src="https://picsum.photos/300/200?28" class="show">
+    <img src="https://picsum.photos/300/200?29" class="show">
+    <img src="https://picsum.photos/300/200?30" class="show">
+    <img src="https://picsum.photos/300/200?31" class="show">
+    <img src="https://picsum.photos/300/200?32" class="show">
+  </div>
+  <p class="page-text">This is a small paragraph describing the images above on Page 4.</p>
+</section>
+
+<footer>
+© Prachi
+</footer>
+
+<!-- Three.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script>
+// Three.js star animation
+const canvas = document.getElementById("landingCanvas");
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias:true, alpha:true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.set(0,0,35);
+const scene = new THREE.Scene();
+
+function generateWordPoints(word,width,height){
+    const canvas = document.createElement("canvas"); canvas.width=width; canvas.height=height;
+    const ctx = canvas.getContext("2d"); ctx.fillStyle="white"; ctx.font=`${height*0.25}px Arial`;
+    ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(word,width/2,height/2);
+    const data = ctx.getImageData(0,0,width,height); const points=[];
+    for(let y=0;y<height;y+=2){for(let x=0;x<width;x+=2){ const idx=(y*width+x)*4; if(data.data[idx+3]>128){points.push(new THREE.Vector3((x-width/2)*0.16,(height/2-y)*0.16,0));}}}
+    return points;
+}
+
+// Word
+const wordPositions = generateWordPoints("ANAMORPHOSIS",380,100);
+const stars = [], velocities = [], starGeo = new THREE.BufferGeometry();
+const scatterRange=12;
+for(let i=0;i<wordPositions.length;i++){
+    const p=new THREE.Vector3((Math.random()-0.5)*scatterRange,(Math.random()-0.5)*scatterRange,(Math.random()-0.5)*scatterRange);
+    stars.push(p);
+    velocities.push(new THREE.Vector3((Math.random()-0.5)*0.1,(Math.random()-0.5)*0.1,(Math.random()-0.5)*0.1));
+}
+starGeo.setFromPoints(stars);
+const starMat = new THREE.PointsMaterial({color:0xffffff,size:0.8});
+const starPoints = new THREE.Points(starGeo,starMat);
+scene.add(starPoints);
+
+let lineMesh=null; 
+const lineMaterial=new THREE.LineBasicMaterial({color:0x4065c5, transparent:true, linewidth:5});
+let mouseX=0; 
+document.addEventListener("mousemove",e=>{mouseX=e.clientX/window.innerWidth;});
+
+function animate(){
+    requestAnimationFrame(animate); 
+    const formWord=mouseX<0.3;
+    for(let i=0;i<stars.length;i++){ 
+        if(formWord){
+            stars[i].x+=(wordPositions[i].x-stars[i].x)*0.15;
+            stars[i].y+=(wordPositions[i].y-stars[i].y)*0.15;
+            stars[i].z+=(0-stars[i].z)*0.15;
+        }else{
+            stars[i].add(velocities[i]);
+            if(Math.abs(stars[i].x)>scatterRange) velocities[i].x*=-1; 
+            if(Math.abs(stars[i].y)>scatterRange) velocities[i].y*=-1; 
+            if(Math.abs(stars[i].z)>scatterRange) velocities[i].z*=-1;
+        }
+    }
+    starGeo.setFromPoints(stars);
+
+    const linePositions=[]; 
+    for(let i=0;i<stars.length;i++){for(let j=i+1;j<stars.length;j++){if(stars[i].distanceTo(stars[j])<6){linePositions.push(stars[i].x,stars[i].y,stars[i].z,stars[j].x,stars[j].y,stars[j].z);}}}
+
+    if(lineMesh) scene.remove(lineMesh);
+    const lineGeo = new THREE.BufferGeometry(); 
+    lineGeo.setAttribute("position",new THREE.Float32BufferAttribute(linePositions,3));
+    lineMesh=new THREE.LineSegments(lineGeo,lineMaterial); 
+    lineMaterial.opacity=formWord?0.1:0.3;
+    scene.add(lineMesh); 
+
+    camera.position.x=(mouseX-0.5)*10; 
+    camera.lookAt(0,0,0); 
+    renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener("resize",()=>{
+    renderer.setSize(window.innerWidth,window.innerHeight); 
+    camera.aspect=window.innerWidth/window.innerHeight; 
+    camera.updateProjectionMatrix();
+});
+
+// Parallax sections 1-4
+const sections = document.querySelectorAll("section:not(#landing)");
+window.addEventListener("scroll",()=>{
+  const scrollY = window.scrollY;
+  sections.forEach((sec,index)=>{
+    const speed = 0.2 + index*0.05;
+    const offset = (scrollY - sec.offsetTop) * speed;
+    sec.style.transform = `translateY(${offset}px)`;
+  });
+});
+</script>
+
+</body>
+</html>
